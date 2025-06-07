@@ -1,0 +1,52 @@
+{
+  "name": "z-coder",
+  "version": "1.0.0",
+  "description": "Empower your coding skill",
+  "type": "module",
+  "main": "index.js",
+  "proxy": "http://localhost:8000/users/login/",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config src/index.js"
+  },
+  "keywords": [
+    "Coding Questions",
+    "Languages",
+    "Code Repository",
+    "Public Questions",
+    "Coding Answers",
+    "Comments",
+    "programming Solutions",
+    "Code Storage",
+    "Software Development Resources",
+    "Programming Q&A Platform",
+    "Coding Best Practices",
+    "Programming FAQs",
+    "Code Management Platform",
+    "Code Storage Solutions",
+    "Private Questions",
+    "Coding Answers",
+    "Coding Community",
+    "Q&A Platform",
+    "Personal Code Library",
+    "Software Devlopment",
+    "Developer's Platform"
+  ],
+  "leader": "Navjot",
+  "author": "Navjot,Prajyot,Subhradeep,Imran",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.0",
+    "mongoose-aggregate-paginate-v2": "^1.0.7"
+  }
+}

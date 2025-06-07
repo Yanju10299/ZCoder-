@@ -1,0 +1,209 @@
+*{
+    padding: 2px;
+    margin: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.Register{
+    border: 3px solid rgba(131, 127, 127, 0.512) ;
+    --tw-bg-opacity:1;
+   background-color: rgb(15 15 15/var(--tw-bg-opacity));
+    padding: 2px;
+    box-shadow:
+    inset 15em 10em 3em  rgba(114, 151, 237, 0.251),
+    -3em -3em 3em 2px rgba(114, 151, 237, 0.251),
+    3em 3em 1em rgba(114, 151, 237, 0.251);
+    overflow: auto;
+    background-image: url("/Users/mehakpreetkaur/Desktop/DSA/c++/my-react-app/src/assets/ZcoderLogo.jpg") !important;
+    background-color: transparent;
+}
+
+#heading1{
+   /*color: rgba(234, 203, 242, 0.37);*/
+   font-size: 100px;
+   font-display: block;
+   font-optical-sizing: auto;
+   
+   text-shadow: rgba(82, 79, 79, 0.437) 4px 4px 3px;
+   line-height: 6rem;
+   position: sticky;
+   display: block;
+   margin-left: 60px;
+   padding-top: 50px;
+   align-items: center;
+   justify-content: center;
+}
+#watermark{
+    opacity: 1;
+    position: sticky;
+    top: 10px;
+    right: 10px;
+    border: 2px solid rgba(118, 156, 237, 0.6);
+    border-radius: 50%;
+    box-shadow: 5px 5px 2px rgba(118, 156, 237, 0.2);
+    display: flex;
+    justify-content: end;
+}
+
+#heading2{
+    font-size: 50px;
+    padding: 5px;
+    text-shadow:  rgba(114, 113, 112, 0.486) 2px 2px 2px;
+    margin-left: 35px;
+    display: flex;
+    padding-top:100px ;
+}
+
+
+
+#RegisterForm{
+    padding: 10px;
+    margin: 10px;
+}
+.container{
+    display: flex;
+}
+
+.personal_Information{
+    border: 3px solid grey ;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    font-size: larger;
+    box-shadow:
+    inset -3em -3em 3em rgba(125, 145, 237, 0.2),
+    0em 0em 0cap 1px rgba(125, 145, 237, 0.2),
+    0.2em 0.2em 0em rgba(125, 145, 237, 0.2);
+    text-shadow: rgba(238, 185, 121, 0.906) 1px 1px 2px;
+}
+
+
+.Professional_Information{
+    border: 3px solid grey ;
+    border-radius: 5px;
+    box-shadow:
+    inset -3em -3em 3em rgba(125, 145, 237, 0.2),
+    0em 0em 0cap 1px rgba(125, 145, 237, 0.2),
+    0.2em 0.2em 0em rgba(125, 145, 237, 0.2);
+    font-size: larger;
+    text-shadow: rgba(238, 185, 121, 0.906) 1px 1px 2px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.userCredentials{
+    border: 3px solid grey ;
+    border-radius: 5px;
+    box-shadow:
+    inset -3em -3em 3em rgba(125, 145, 237, 0.2),
+    0em 0em 0cap 1px rgba(125, 145, 237, 0.2),
+    0.2em 0.2em 0em rgba(125, 145, 237, 0.2);
+    text-shadow: rgba(238, 185, 121, 0.906) 1px 1px 2px;
+    font-size: larger;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+.Personal_legend{
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+    height: auto;
+}
+
+.Professional_legend{
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.user_legend{
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.Data{
+    padding: 10px;
+    margin: 10px;
+}
+
+.user{
+    padding: 2px;
+    margin: 3px;
+}
+
+.professional{
+    padding: 2px;
+    margin: 3px;
+}
+
+#occupation{
+    margin-right: 200px;
+}
+
+#Languages{
+    margin: 20px;
+    padding: 10px;
+}
+
+#platform{
+    margin-right: 100px;
+}
+
+#firstname{
+    margin-right: 30px;
+}
+
+.required label:after {
+    content:"*";
+    color: red;
+}
+
+#mname{
+    margin-right: 30px;
+}
+
+#email{
+    margin-right: 250px;
+}
+
+#gender{
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#username{
+    margin-bottom: 20px ;
+}
+
+#password{
+    margin-right: 50px ;
+}
+
+.fav_language{
+    margin-right: 50px;
+}
+
+#submit{
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+    inset 2em 2em 4em rgba(127, 223, 198, 0.372),
+    -0.2em -0.2em 0em  rgba(125, 145, 237, 0.5),
+    0.2em 0.2em 0em rgba(125, 145, 237, 0.5);
+    padding: 10px;
+    text-shadow: rgba(238, 185, 121, 0.906) 1px 1px 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#agreement{
+    font-size: 20px;
+    text-shadow: rgba(238, 185, 121, 0.906) 0.5px 0.5px 1px;
+}

@@ -1,0 +1,101 @@
+*{
+
+    padding: 10px;
+    margin: 7px 1px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+
+body{
+    border: 1px solid rgba(236, 162, 162, 0.1);
+    box-shadow:
+    inset 20em 10em 3em rgba(114, 151, 237, 0.251),
+    -15em -6em 3em rgba(114, 151, 237, 0.251),
+    -3em -3em 3em 2px rgba(114, 151, 237, 0.251),
+    3em 3em 1em rgba(114, 151, 237, 0.251);
+}
+
+#heading1{
+    font-size: 120px;
+    font-display: block;
+    font-optical-sizing: auto;  
+    text-shadow: rgba(145, 142, 139, 0.306) 3px 3px 3px , rgba(238, 185, 121, 0.906) 3px 3px 3px;
+    line-height: 8rem;
+    position: sticky;
+    margin-left: 24%;
+    padding-top: 10px;
+ }
+
+#watermark1{
+    opacity: 1;
+    position: fixed;
+    top: 100px;
+    left: 3%;
+    border: 2px solid rgba(118, 156, 237, 0.6);
+    box-shadow: 4px 4px 3px rgba(118, 156, 237, 0.5);
+}
+
+
+#watermark2{
+    opacity: 1;
+    position: fixed;
+    top: 100px;
+    right: 3%;
+    border: 2px solid rgba(118, 156, 237, 0.6);
+    box-shadow: 4px 4px 3px rgba(118, 156, 237, 0.5); 
+}
+
+.container{
+    border: 3px solid rgba(96, 93, 93, 0.674);
+    width: 47%;
+    margin-left: 25%;
+    margin-top: 50px;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow:
+    inset -10em -17em 3em rgba(125, 145, 237, 0.3),
+    -5px -5px 2px rgba(118, 156, 237, 0.8),
+    5px 5px 2px rgba(118, 156, 237, 0.8);
+    overflow: auto;
+}
+
+#username{
+    font-size: 20px;
+    font-weight: 50;
+}
+
+#password{
+    font-size: 20px;
+    font-weight: 50;
+}
+
+#showpassword{
+    font-size: 13px;
+    font-weight: 40;
+}
+
+
+#submit{
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+    inset 2em 2em 4em rgba(127, 223, 198, 0.372),
+    -0.2em -0.2em 0em  rgba(125, 145, 237, 0.5),
+    0.2em 0.2em 0em rgba(125, 145, 237, 0.5);
+    padding: 10px;
+    text-shadow: rgba(238, 185, 121, 0.906) 1px 1px 2px;
+    margin-left: 30%;
+}
+
+#fpassword{
+    font-size: 20px;
+
+
+}
+
+#register{
+    font-size: 20px;
+    padding-left: 40px;
+}

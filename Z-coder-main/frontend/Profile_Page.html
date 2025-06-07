@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile_Page</title>
+    <link rel="icon" href="./ZcoderLogo.jpg" type="jpg" id="logo">
+    <link rel="stylesheet" href="Profile_Page.css">
+    <link rel="stylesheet" href="Contest_Calender.css">
+</head>
+<body>
+
+    <nav>
+        <img src="./ZcoderLogo.jpg" alt="Z-Coder" id="logo" height="60px" width="60px">
+        <a href="./Home_Page.html" aria-current="page" id="home">Home </a>
+        <a href="./my_Question.html" id="ques">  MY Questions </a>
+        <a href="./About.html" id="about">  About  </a>
+        <span id="heading">Z-Coder</span>
+        <!-- <input type="text" placeholder="Search..." class="search-input" id="keyword">
+        <button id="search" class="search-button"><img src="./search_bar.png" alt="search" height="30px" width="30px"></button>
+         <input id="search" class="truncate" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-controls="matches" aria-expanded="false" aria-live="polite" placeholder="Search"> 
+        <cr-realbox-icon id="icon" in-searchbox="" expanded-state-icons-chrome-refresh="" background-image="" mask-image="url(//resources/cr_components/omnibox/icons/search_cr23.svg)"></cr-realbox-icon>
+        <input type="text" placeholder="Search.." id="search" > -->
+        <div >
+            <button id="calendarButton"><img src="./calender.png" alt="Contest Calender" height="40px" width="40px"> </button>
+            <div id="calendarDropdown" class="dropdown-content">
+                <div id="calendarHeader">
+                    <select id="monthSelect"></select>
+                    <select id="yearSelect"></select>
+                </div>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    
+        <!-- Modal for adding entry -->
+        <div id="entryModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Add Entry</h2>
+                <form id="entryForm">
+                    <input type="date" id="entryDate" readonly>
+                    <textarea id="entryText" rows="4" cols="20"></textarea>
+                    <button type="button" onclick="saveEntry()">Save</button>
+                </form>
+            </div>
+        </div>
+        <!-- <a href="" id="calender">  <img src="./calender.png" alt="Contest Calender" height="35px" width="35px">  </a> -->
+        <!-- <a href="" id="notifications">  <img src="./bellicon.png" alt=" Notifications" height="35px" width="35px">   </a> -->
+        <button id="Delete profile"><img src="./dlticon.png" alt="Delete Profile" height="40px" width="40px"></button>
+    </nav>
+
+    <h1 id="ZCoder">Z-coder</h1>
+    <img
+        id="watermark1"
+        src="./ZcoderLogo.jpg"
+        alt="logo"
+        width="200px"
+        height="200px"
+      />
+      <img
+        id="watermark2"
+        src="./ZcoderLogo.jpg"
+        alt="logo"
+        width="200px"
+        height="200px"
+       />
+    <div id="container"></div>
+
+    <script>
+        document.getElementById("Delete profile").addEventListener("click",async function(event) {
+            const response=await fetch("https://localhost:8000/users/deleteprofile",{
+                method:"get",
+                credentials:"include",
+            });
+            if(response.ok)
+            {
+                alert("Account deleted");
+                window.location.href="./Login_Page.html"
+            }
+            else
+            {
+                alert("Please check if you are logged in");
+            }
+        })
+        document.addEventListener("DOMContentLoaded",async function(event) {
+            event.preventDefault();
+            const response=await fetch("https://localhost:8000/users/profile",{
+                method:"get",
+                credentials:"include",
+            });
+            const data=await response.json();
+
+
+
+            const UserNameDiv=document.createElement("div");
+            UserNameDiv.id="UserNameDiv";
+
+            const FullNameDiv=document.createElement("div");
+            FullNameDiv.id="FullNameDiv";
+
+            const EmailDiv=document.createElement("div");
+            EmailDiv.id="EmailDiv";
+
+            const DOBDiv=document.createElement("div");
+            DOBDiv.id="DOBDiv";
+
+            const GenderDiv=document.createElement("div");
+            GenderDiv.id="GenderDiv";
+
+            const OccupationDiv=document.createElement("div");
+            OccupationDiv.id="OccupationDiv";
+
+            const ExperienceDiv=document.createElement("div");
+            ExperienceDiv.id="ExperienceDiv";
+
+            const RankDiv=document.createElement("div");
+            RankDiv.id="RankDiv";
+
+            const FavLanguagesDiv=document.createElement("div");
+            FavLanguagesDiv.id="FavLanguagesDiv";
+
+
+
+
+            const UserName=document.createElement("span");
+            UserName.textContent=`${data.UserName}`;
+            UserName.id="UserName";
+
+            const FullName=document.createElement("span");
+            FullName.textContent=`Full name :     ${data.FirstName} ${data.MiddleName} ${data.LastName}`;
+            FullName.id="FullName";
+
+            const Email=document.createElement("span");
+            Email.textContent=`Email :   ${data.Email}`;
+            Email.id="Email";
+
+            const DOB=document.createElement("span");
+            const d=new Date(data.DateOfBirth);
+            DOB.textContent=`Date of birth :   ${d.toLocaleDateString()}`;
+            DOB.id="DOB";
+
+            const Gender=document.createElement("span");
+            Gender.textContent=`Gender :   ${data.Gender}`;
+            Gender.id="Gender";
+
+            const Occupation=document.createElement("span");
+            Occupation.textContent=`Occupation :   ${data.Occupation}`;
+            Occupation.id="Occupation";
+
+            const Experience=document.createElement("span");
+            Experience.textContent=`Experience :   ${data.Experience}`;
+            Experience.id="Experience";
+
+            const Rank=document.createElement("span");
+            Rank.textContent=`Rank ${data.Rank[1]} on platform  ${data.Rank[0]}`;
+            Rank.id="Rank";
+
+            const FavLanguages=document.createElement("span");
+            FavLanguages.textContent=`Favourite Languages :   ${data.FavLanguages}`;
+            FavLanguages.id="FavLanguages";
+
+            const EditUserName=document.createElement("button");
+            EditUserName.innerHTML=`<img src="./editicon.png" alt="edit" height="35px" width="35px">`;
+            EditUserName.id="EditUserName";
+
+            const EditFullName=document.createElement("button");
+            EditFullName.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditFullName.id="EditFullName";
+
+            const EditEmail=document.createElement("button");
+            EditEmail.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditEmail.id="EditEmail"; 
+            
+            const EditDOB=document.createElement("button");
+            EditDOB.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditDOB.id="EditDOB";
+
+            const EditGender=document.createElement("button");
+            EditGender.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditGender.id="EditGender";
+
+            const EditOccupation=document.createElement("button");
+            EditOccupation.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditOccupation.id="EditOccupation";
+
+            const EditRank=document.createElement("button");
+            EditRank.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditRank.id="EditRank";
+
+            const EditFavLanguages=document.createElement("button");
+            EditFavLanguages.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditFavLanguages.id="EditFavLanguages";
+
+            const EditExperience=document.createElement("button")
+            EditExperience.innerHTML=`<sub><img src="./editicon.png" alt="edit" height="15px" width="15px"></sub>`;
+            EditExperience.id="EditExperience";
+
+
+
+            const SubmitUserName=document.createElement("button");
+            SubmitUserName.textContent="Submit";
+            SubmitUserName.id="SubmitUserName";
+            SubmitUserName.style.display="none";
+
+            const SubmitFullName=document.createElement("button");
+            SubmitFullName.textContent="Submit";
+            SubmitFullName.id="SubmitFullName";
+            SubmitFullName.style.display="none";
+
+            const SubmitEmail=document.createElement("button");
+            SubmitEmail.textContent="Submit";
+            SubmitEmail.id="SubmitEmail"; 
+            SubmitEmail.style.display="none";
+            
+            const SubmitDOB=document.createElement("button");
+            SubmitDOB.textContent="Submit";
+            SubmitDOB.id="SubmitDOB";
+            SubmitDOB.style.display="none";
+
+            const SubmitGender=document.createElement("button");
+            SubmitGender.textContent="Submit";
+            SubmitGender.id="SubmitGender";
+            SubmitGender.style.display="none";
+
+            const SubmitOccupation=document.createElement("button");
+            SubmitOccupation.textContent="Submit";
+            SubmitOccupation.id="SubmitOccupation";
+            SubmitOccupation.style.display="none";
+
+            const SubmitRank=document.createElement("button");
+            SubmitRank.textContent="Submit";
+            SubmitRank.id="SubmitRank";
+            SubmitRank.style.display="none";
+
+            const SubmitFavLanguages=document.createElement("button");
+            SubmitFavLanguages.textContent="Submit";
+            SubmitFavLanguages.id="SubmitFavLanguages";
+            SubmitFavLanguages.style.display="none";
+
+            const SubmitExperience=document.createElement("button")
+            SubmitExperience.textContent="Submit";
+            SubmitExperience.id="SubmitExperience";
+            SubmitExperience.style.display="none";
+
+
+
+
+
+
+            const InputUserName=document.createElement("input");
+            InputUserName.placeholder='Username'
+            InputUserName.id="InputUserName";
+            InputUserName.style.display="none";
+
+            const InputFirstName=document.createElement("input");
+            InputFirstName.placeholder='first name'
+            InputFirstName.id="InputFirstName";
+            InputFirstName.style.display="none";
+
+            const InputMiddleName=document.createElement("input");
+            InputMiddleName.placeholder='Middle Name'
+            InputMiddleName.id="InputMiddleName"
+            InputMiddleName.style.display="none";
+
+            const InputLastName=document.createElement("input");
+            InputLastName.placeholder='Last Name'
+            InputLastName.id="InputLastName"
+            InputLastName.style.display="none";
+
+            const InputEmail=document.createElement("input");
+            InputEmail.placeholder='abc@gmail.com'
+            InputEmail.id="InputEmail"; 
+            InputEmail.style.display="none";
+            
+            const InputDOB=document.createElement("input");
+            InputDOB.id="InputDOB";
+            InputDOB.type = "date";
+            InputDOB.style.display="none";
+
+            const InputGender=document.createElement("input");
+            InputGender.id="InputGender";
+            InputGender.style.display="none";
+
+            const InputOccupation=document.createElement("input");
+            InputOccupation.placeholder='Occupation'
+            InputOccupation.id="InputOccupation";
+            InputOccupation.style.display="none";
+
+            const InputRank=document.createElement("input");
+            InputRank.placeholder='Rank'
+            InputRank.id="InputRank";
+            InputRank.style.display="none";
+
+            const InputRankOnPlatform=document.createElement("input");
+            InputRankOnPlatform.placeholder='Platform'
+            InputRankOnPlatform.id="InputRankOnPlatform";
+            InputRankOnPlatform.style.display="none";
+
+            const InputFavLanguages1=document.createElement("input");
+            InputFavLanguages1.placeholder='favorite language 1';
+            InputFavLanguages1.id="InputFavLanguages1";
+            InputFavLanguages1.style.display="none";
+
+            const InputFavLanguages2=document.createElement("input");
+            InputFavLanguages2.placeholder='favorite language 2';
+            InputFavLanguages2.id="InputFavLanguages2";
+            InputFavLanguages2.style.display="none";
+
+            const InputFavLanguages3=document.createElement("input");
+            InputFavLanguages3.placeholder='favorite language 3';
+            InputFavLanguages3.id="InputFavLanguages3";
+            InputFavLanguages3.style.display="none";
+
+            const InputExperience=document.createElement("input")
+            InputExperience.id="InputExperience";
+            InputExperience.type = "number";
+            InputExperience.style.display="none";
+
+
+
+
+
+            
+            UserNameDiv.appendChild(UserName);
+            UserNameDiv.appendChild(EditUserName);
+            UserNameDiv.appendChild(InputUserName);
+            UserNameDiv.appendChild(SubmitUserName);
+
+
+            FullNameDiv.appendChild(FullName);
+            FullNameDiv.appendChild(EditFullName);
+            FullNameDiv.appendChild(InputFirstName);
+            FullNameDiv.appendChild(InputMiddleName);
+            FullNameDiv.appendChild(InputLastName);
+            FullNameDiv.appendChild(SubmitFullName);
+           
+
+
+            EmailDiv.appendChild(Email);
+            EmailDiv.appendChild(EditEmail);
+            EmailDiv.appendChild(InputEmail);
+            EmailDiv.appendChild(SubmitEmail);
+
+
+
+
+            DOBDiv.appendChild(DOB);
+            DOBDiv.appendChild(EditDOB);
+            DOBDiv.appendChild(InputDOB);
+            DOBDiv.appendChild(SubmitDOB);
+
+
+
+            GenderDiv.appendChild(Gender);
+            GenderDiv.appendChild(EditGender);
+            GenderDiv.appendChild(InputGender);
+            GenderDiv.appendChild(SubmitGender);
+
+
+            FavLanguagesDiv.appendChild(FavLanguages);
+            FavLanguagesDiv.appendChild(EditFavLanguages);
+            FavLanguagesDiv.appendChild(InputFavLanguages1);
+            FavLanguagesDiv.appendChild(InputFavLanguages2);
+            FavLanguagesDiv.appendChild(InputFavLanguages3);
+            FavLanguagesDiv.appendChild(SubmitFavLanguages);
+
+
+            OccupationDiv.appendChild(Occupation);
+            OccupationDiv.appendChild(EditOccupation);
+            OccupationDiv.appendChild(InputOccupation);
+            OccupationDiv.appendChild(SubmitOccupation);
+
+
+            ExperienceDiv.appendChild(Experience);
+            ExperienceDiv.appendChild(EditExperience);
+            ExperienceDiv.appendChild(InputExperience);
+            ExperienceDiv.appendChild(SubmitExperience);
+
+
+            RankDiv.appendChild(Rank);
+            RankDiv.appendChild(EditRank);
+            RankDiv.appendChild(InputRank);
+            RankDiv.appendChild(InputRankOnPlatform);
+            RankDiv.appendChild(SubmitRank);
+
+
+
+
+
+            const container=document.getElementById("container")
+            container.appendChild(UserNameDiv);
+            container.appendChild(FullNameDiv);
+            container.appendChild(EmailDiv);
+            container.appendChild(DOBDiv);
+            container.appendChild(GenderDiv);
+            container.appendChild(FavLanguagesDiv);
+            container.appendChild(OccupationDiv);
+            container.appendChild(ExperienceDiv);
+            container.appendChild(RankDiv);
+
+
+
+
+
+
+            document.getElementById("EditUserName").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitUserName").style.display=="none")
+                {
+                    document.getElementById("InputUserName").style.display="block";
+                    document.getElementById("SubmitUserName").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputUserName").style.display="none";
+                    document.getElementById("SubmitUserName").style.display="none";
+                }
+
+            })
+
+            document.getElementById("EditFullName").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if (document.getElementById("SubmitFullName").style.display=="none") 
+                {
+                    document.getElementById("InputFirstName").style.display="block";
+                    document.getElementById("InputMiddleName").style.display="block";
+                    document.getElementById("InputLastName").style.display="block";
+                    document.getElementById("SubmitFullName").style.display="block";
+                } 
+                else 
+                {
+                    document.getElementById("InputFirstName").style.display="none";
+                    document.getElementById("InputMiddleName").style.display="none";
+                    document.getElementById("InputLastName").style.display="none";
+                    document.getElementById("SubmitFullName").style.display="none";
+                }
+
+            })
+
+            document.getElementById("EditEmail").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitEmail").style.display=="none")
+                {
+                    document.getElementById("InputEmail").style.display="block";
+                    document.getElementById("SubmitEmail").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputEmail").style.display="none";
+                    document.getElementById("SubmitEmail").style.display="none";
+                }
+            })
+
+            document.getElementById("EditDOB").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitDOB").style.display=="none")
+                {
+                    document.getElementById("InputDOB").style.display="block";
+                    document.getElementById("SubmitDOB").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputDOB").style.display="none";
+                    document.getElementById("SubmitDOB").style.display="none";
+                }
+            })
+
+            document.getElementById("EditGender").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitGender").style.display=="none")
+                {
+                    document.getElementById("InputGender").style.display="block";
+                    document.getElementById("SubmitGender").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputGender").style.display="none";
+                    document.getElementById("SubmitGender").style.display="none";
+                }
+            })
+
+            document.getElementById("EditOccupation").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitOccupation").style.display=="none")
+                {
+                    document.getElementById("InputOccupation").style.display="block";
+                    document.getElementById("SubmitOccupation").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputOccupation").style.display="none";
+                    document.getElementById("SubmitOccupation").style.display="none";
+                }
+            })
+
+            document.getElementById("EditExperience").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitExperience").style.display=="none")
+                {
+                    document.getElementById("InputExperience").style.display="block";
+                    document.getElementById("SubmitExperience").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputExperience").style.display="none";
+                    document.getElementById("SubmitExperience").style.display="none";
+                }
+            })
+
+            document.getElementById("EditRank").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitRank").style.display=="none")
+                {
+                    document.getElementById("InputRank").style.display="block";
+                    document.getElementById("InputRankOnPlatform").style.display="block";
+                    document.getElementById("SubmitRank").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputRankOnPlatform").style.display="none";
+                    document.getElementById("InputRank").style.display="none";
+                    document.getElementById("SubmitRank").style.display="none";
+                }
+            })
+
+            document.getElementById("EditFavLanguages").addEventListener("click", async function (event) {
+                event.preventDefault();
+                if(document.getElementById("SubmitFavLanguages").style.display=="none")
+                {
+                    document.getElementById("InputFavLanguages1").style.display="block";
+                    document.getElementById("InputFavLanguages2").style.display="block";
+                    document.getElementById("InputFavLanguages3").style.display="block";
+                    document.getElementById("SubmitFavLanguages").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("InputFavLanguages1").style.display="none";
+                    document.getElementById("InputFavLanguages2").style.display="none";
+                    document.getElementById("InputFavLanguages3").style.display="none";
+                    document.getElementById("SubmitFavLanguages").style.display="none";
+                }
+            })
+
+
+            document.getElementById("SubmitUserName").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const data=document.getElementById("InputUserName").value;
+                const response=await fetch("https:/localhost:8000/users/update_username",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({username:data})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+
+            })
+
+
+            document.getElementById("SubmitFullName").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const first=document.getElementById("InputFirstName").value;
+                const middle=document.getElementById("InputMiddleName").value;
+                const last=document.getElementById("InputLastName").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_fullname",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({firstname:first,middlename:middle,lastname:last})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+
+            })
+
+            document.getElementById("SubmitEmail").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const mail=document.getElementById("InputEmail").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_email",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({email:mail})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+
+            })
+
+            document.getElementById("SubmitDOB").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const dob=document.getElementById("InputDOB").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_dob",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({dateofbirth:dob})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+            })
+
+            document.getElementById("SubmitGender").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const gen=document.getElementById("InputGender").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_gender",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({gender:gen})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+            })
+
+
+            document.getElementById("SubmitOccupation").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const data=document.getElementById("InputOccupation").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_occupation",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({occupation:data})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+            })
+
+
+            document.getElementById("SubmitExperience").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const data=document.getElementById("InputExperience").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_experience",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({experience:data})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+            })
+
+            document.getElementById("SubmitFavLanguages").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const data1=document.getElementById("InputFavLanguages1").value;
+                const data2=document.getElementById("InputFavLanguages2").value;
+                const data3=document.getElementById("InputFavLanguages3").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_fav_lang",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({Lang1:data1,Lang2:data2,Lang3:data3})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+            })
+
+
+            document.getElementById("SubmitRank").addEventListener("click",async function(event) {
+                event.preventDefault();
+                const data1=document.getElementById("InputRank").value;
+                const data2=document.getElementById("InputRankOnPlatform").value;
+
+                const response=await fetch("https:/localhost:8000/users/update_rank",{
+                    method:"post",
+                    credentials:"include",
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify({rank:data1,platform:data2})
+                });
+                if(response.ok)
+                {
+                    alert("Successfully edited")
+                    window.location.href="./Profile_page.html";
+                }
+                else
+                {
+                    alert("Something went wrong. Please refresh and try again");
+                }
+            })
+            
+        })
+
+        
+
+    </script>
+    <script src="Contest_Calender.js"></script>
+</body>
+</html>

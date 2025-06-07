@@ -1,0 +1,307 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-evenly;
+    padding: 0.2rem;
+    gap: 0.5rem;
+    border-bottom: solid 1px #aaa;
+    background-color: #eee;
+}
+
+  
+nav a {
+    display: inline-block;
+    padding: 0.2rem; 
+    border-radius: 0.2rem;
+    border: solid 1px rgba(93, 91, 91, 0.449);
+    text-align: center;
+    text-decoration: none;
+    color: #1b1b1b;
+    font-size: 24px;
+}
+  
+nav a[aria-current='page'] {
+    color: #000;
+    background-color: #d4d4d4;
+}
+
+#heading{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 55px;
+  font-weight: 200;
+  text-shadow:  2px 2px rgba(107, 105, 105, 0.331);
+  margin-inline: 35px;
+}
+
+#logo{
+
+  border: 0.2px solid rgba(76, 72, 72, 0.288);
+  box-shadow: 2px 2px rgba(107, 105, 105, 0.331);
+  border-radius: 50%;
+}
+
+
+#calender{
+  border: 0px solid rgba(76, 72, 72, 0.288);
+  box-shadow: 2px 2px rgba(107, 105, 105, 0.331);
+  
+}
+
+#profile{
+  border: 0.2px solid rgba(76, 72, 72, 0.288);
+  box-shadow: 2px 2px rgba(107, 105, 105, 0.331);
+}
+
+#home{
+  border: 0.2px solid rgba(76, 72, 72, 0.288);
+  border-radius: 3px;
+  width: 110px;
+  box-shadow: 2px 2px rgba(107, 105, 105, 0.331);
+}
+
+#ques{
+  border: 0.2px solid rgba(76, 72, 72, 0.288);
+  border-radius: 3px;
+  width: 170px;
+  box-shadow: 2px 2px rgba(107, 105, 105, 0.331);
+}
+
+#about{
+  border: 0.2px solid rgba(76, 72, 72, 0.288);
+  border-radius: 3px;
+  width: 130px;
+  box-shadow: 2px 2px rgba(107, 105, 105, 0.331);
+}
+
+#watermark1{
+    opacity: 0.9;
+    position: fixed;
+    top: 200px;
+    left: 20px;
+    border: 2px solid rgba(118, 156, 237, 0.6);
+    box-shadow: 8px 8px 4px rgba(118, 156, 237, 0.2);
+}
+
+
+#watermark2{
+    opacity: 0.9;
+    position: fixed;
+    top: 200px;
+    right: 20px;
+    border: 2px solid rgba(118, 156, 237, 0.6);
+    box-shadow: 8px 8px 4px rgba(118, 156, 237, 0.2);  
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(126, 121, 121, 0.449);
+    box-shadow:
+    inset 20em 15em 2em rgba(114, 151, 237, 0.151),
+    -1em -1em 0.5em  rgba(114, 151, 237, 0.051),
+    2em 2em 1em rgba(114, 151, 237, 0.151);
+    width: 100%;
+}
+
+#container{
+    border: 2px solid rgba(106, 103, 103, 0.489);
+    box-shadow:
+    inset -10em -10em 2em rgba(114, 151, 237, 0.151),
+    -1em -1em 0.5em  rgba(114, 151, 237, 0.051),
+    2em 2em 1em rgba(114, 151, 237, 0.151);
+    margin-left: 22%;
+    width: 55%;
+    height: auto;
+}
+
+#ZCoder{
+    font-size: 90px;
+    display: flex;
+    justify-content: center;
+    text-shadow:  4px 4px rgba(137, 134, 134, 0.416);
+}
+
+#UserNameDiv{
+    margin: 5px;
+    padding: 5px;
+    text-align:center;
+    font-size: 40px;
+    text-shadow:  2px 2px rgba(137, 134, 134, 0.416);
+    display:flex;
+    justify-content: space-between;
+}
+
+#UserName{
+    margin-inline-end: 50px;
+}
+
+#EditUserName{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+
+#FullNameDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#FullName{
+    margin-inline-end: 50px;
+}
+
+#EditFullName{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+
+#EmailDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#Email{
+    margin-inline-end: 50px;
+}
+
+#EditEmail{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+#DOBDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#DOB{
+    margin-inline-end: 50px;
+}
+
+#EditDOB{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+#GenderDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#Gender{
+    margin-inline-end: 50px;
+}
+
+#EditGender{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+#OccupationDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#Occupation{
+    margin-inline-end: 50px;
+}
+
+#EditOccupation{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+#ExperienceDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#Experience{
+    margin-inline-end: 50px;
+}
+
+#EditExperience{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+#RankDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#Rank{
+    margin-inline-end: 50px;
+}
+
+#EditRank{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+#FavLanguagesDiv{
+    border: 1px solid rgba(106, 103, 103, 0.489);
+    margin: 5px;
+    padding: 5px;
+    text-align:justify;
+    font-size: 20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+#FavLanguages{
+    margin-inline-end: 20px;
+}
+
+#EditFavLanguages{
+   margin: 0px;
+   border: 0.1px rgba(92, 91, 91, 0.195) solid;
+}
+
+input{
+    margin: 2px;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register-Page</title>
+    <link rel="stylesheet" href="Register_Page.css">
+    <link rel="icon" href="./ZcoderLogo.jpg" type="jpg" id="logo">
+</head>
+<body>
+    <div class="Register">
+        <div class="container">
+            <img id="watermark" src="./ZcoderLogo.jpg" alt="logo" width="200px" height="200px">
+            <h1 id="heading1">Z-CODER</h1><br/><br/>
+            <h2 id="heading2">REGISTER</h2>
+        </div>
+        <form id="RegisterForm" action="https://localhost:8000/users/register" method="post">
+            
+            <div class="personal_Information">
+                <fieldset> 
+                    <legend class="Personal_legend">Personal Information</legend>
+                    <div class="Data">
+                        <div class="required">
+                            <label for="firstname" >First name:</label>
+                            <input type="text" id="firstname" name="firstname">
+                        </div>
+                        <label for="mname">MiddleName:</label>
+                        <input type="text" id="mname" name="middlename">
+                        <label for="lname">LastName:</label>
+                        <input type="text" id="lname" name="lastname"><br><br>
+                        <div class="required">
+                            <label for="email">Email id</label>
+                            <input type="email" id="email" name="email" placeholder="eg: abcd@example.com">
+                            <label for="DOB">Date Of Birth:</label>
+                            <input type="date" id="DOB" name="dateofbirth">
+                        </div><br>
+                    </div>
+                            
+                    <fieldset  id="gender">
+                        <legend>Gender</legend>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="others" name="gender" value="others">
+                        <label for="others">Other</label><br>
+                    </fieldset>
+                </fieldset>
+            </div>
+            <br>
+            <div class="Professional_Information">
+                <fieldset>
+                    <legend class="Professional_legend">Professional Information</legend>
+                    <div class="professional">
+                        <label for="occupation" >Occupation</label>
+                        <input type="text" id="occupation" name="occupation">
+                        <label for="experience">Coding Experience</label>
+                        <input type="number" id="experience" name="experience" default="0" min="0" max="50"><br>
+                        <fieldset  id="Languages">
+                            <legend>Favourite Languages</legend>
+                            <input type="checkbox" id="C"  name="favlanguages" value="C" >
+                            <label for="C" class="fav_language">C</label>
+                            <input type="checkbox" id="C++" name="favlanguages" value="C++" >
+                            <label for="C++" class="fav_language">C++</label>
+                            <input type="checkbox" id="Python" name="favlanguages"  value="Python">
+                            <label for="Python" class="fav_language">Python</label>
+                            <input type="checkbox" id="JAVA" name="favlanguages"  value="JAVA">
+                            <label for="JAVA" class="fav_language">JAVA</label>
+                        </fieldset>
+                        <label for="platform">Platform Where You Code: </label>
+                        <input type="text" id="platform" name="platform">
+                        <label for="rank">Rank on that platform</label>
+                        <input type="text" id="rank" name="rank">
+                    </div>
+                </fieldset>
+            </div><br/>
+        
+        
+            <div class="userCredentials">
+                <fieldset>
+                    <legend class="user_legend">User Credentials</legend>
+                    <div class="user">
+                        <div class="required">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Enter Username of your choice"><br>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="eg: pass@123">
+                            <label for="Cpassword">confirm Password:</label>
+                            <input type="password" id="Cpassword" name="confirmpassword" placeholder="eg: pass@123"><br>
+                        </div>    
+                    </div>
+                </fieldset><br/>
+            
+                <fieldset>
+                    <legend class="Questions"> Security Questions For Password Retention </legend>
+                        <label for="Questions" id="Questions"> Question of your choice: </label>
+                        <select id="Questions" name="securityquestion">
+                            <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+                            <option value="What was the name of your first school?">What was the name of your first school?</option>
+                            <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                            <option value="What is the name of the first beach you visited?">What is the name of the first beach you visited?</option>
+                            <option value="What was the name of the first movie you saw in a theater?">What was the name of the first movie you saw in a theater?</option>
+                            <option value="What was the name of your first roommate?">What was the name of your first roommate?</option>
+                            <option value="What was the name of your first crush?">What was the name of your first crush?</option>
+                            <option value="What is the name of the first person you kissed?">What is the name of the first person you kissed?</option>
+                        </select>
+                        <label for="securityanswer">Answer:</label>
+                        <input type="text"  id="securityanswer" name="securityanswer" placeholder="Answer here">
+                
+                </fieldset>
+            </div><br/>
+            <p>The (*) information is  compulosry</p>
+            <input type="checkbox" id="agreement">
+            <label for="agreement"id="agreement" >I assure that all the information is correct</label><br><br>
+            <input type="submit" value="Submit" id="submit"><br>
+        </form>
+    </div>
+    <script>
+        console.log("I am in script");
+        document.getElementById("RegisterForm").addEventListener("submit",async function (event) {
+            event.preventDefault();
+
+            const fdata=new FormData(this);
+            const data = Object.fromEntries(fdata.entries());
+            console.log(data);
+
+            const response=await fetch("https://localhost:8000/users/register",{
+                method:'POST',
+                headers:{'Content-Type':"application/json"},
+                body:JSON.stringify(data)
+            })
+            if(response.ok)
+            {
+                console.log(response);
+                window.location.href="./Login_Page.html"
+            }
+            else
+            {
+                alert("registration failed. Fill all the required fields");
+            }
+        })
+    </script>  
+</body>
+</html>

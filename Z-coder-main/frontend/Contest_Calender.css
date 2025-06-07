@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* #calendarButton {
+    padding: 5px 15px;
+    margin: 18px;
+} */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+     background-color: #f9f9f9; 
+    min-width: 340px;
+    height: 330px;
+    right: 30px;
+    border: 0px solid #cccccc8f;
+    box-shadow:
+    inset 10em 10em 3em rgba(122, 135, 190, 0.3),
+    -5px -5px 2px rgba(118, 156, 237, 0.8),
+    5px 5px 2px rgba(118, 156, 237, 0.8);
+    z-index: 1;
+    overflow: auto;
+}
+
+#calendarHeader {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px;
+    border: 1px solid #988d8d50;
+    box-shadow:
+    inset 5em 3em 3em rgba(134, 152, 235, 0.387),
+    -5px -5px 2px rgba(118, 156, 237, 0.1),
+    5px 5px 2px rgba(118, 156, 237, 0.1);
+
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.day {
+    border: 1px solid #7f7c7c73;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.day.highlighted {
+    background-color: rgba(18, 179, 237, 0.703);
+    color: black;
+}
+
+.day span {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 10px;
+    color: #888;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
