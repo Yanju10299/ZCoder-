@@ -28,4 +28,3 @@ Run the Application:
 
 npm start The application will start, and you can access it via http://localhost:3000.
 
-Video Link "https://drive.google.com/file/d/1NRz8uxJrjW3gg34C5E_7FJwT5ga4O5-w/view?usp=sharing"
